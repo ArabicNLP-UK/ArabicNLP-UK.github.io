@@ -1291,36 +1291,54 @@
     document.getElementById("fc-button").href = chosen.link;
 </script>
 <script>
-// Insert list of corpora into <ul id="corpus-links">
 const corpusLinks = document.getElementById("corpus-links");
 
+// Fill sidebar list
 corpora.forEach(corpus => {
     const li = document.createElement("li");
     const a = document.createElement("a");
 
-    a.href = "#";                          // keeps appearance of a link
+    a.href = "#";
     a.textContent = corpus.title;
 
     a.onclick = (event) => {
-        event.preventDefault();            // stops jump to top
-        loadCorpus(corpus.id);             // loads corpus in place
+        event.preventDefault();
+        loadCorpus(corpus.id);
     };
 
     li.appendChild(a);
     corpusLinks.appendChild(li);
 });
 
-
-// Load any corpus by ID into the Featured section
 function loadCorpus(id) {
     const corpus = corpora.find(c => c.id === id);
     if (!corpus) return;
 
-    document.getElementById("fc-title").textContent = corpus.title;
+    // Title link
+    const titleLink = document.getElementById("fc-title");
+    titleLink.textContent = corpus.title;
+    titleLink.href = corpus.link;
+    titleLink.target = "_blank";
+
+    // Subtitle
     document.getElementById("fc-subtitle").textContent = corpus.subtitle;
-    document.getElementById("fc-image").src = corpus.image;
+
+    // Image + its clickable link
+    const img = document.getElementById("fc-image");
+    img.src = corpus.image;
+    img.alt = corpus.title;
+
+    const imgLink = document.getElementById("fc-link");
+    imgLink.href = corpus.link;
+    imgLink.target = "_blank";
+
+    // Description
     document.getElementById("fc-desc").innerHTML = corpus.longHtml;
-    document.getElementById("fc-button").href = corpus.link;
+
+    // Button link
+    const button = document.getElementById("fc-button");
+    button.href = corpus.link;
+    button.target = "_blank";
 }
 
 // Load random corpus on page load
@@ -1328,8 +1346,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const randomCorpus = corpora[Math.floor(Math.random() * corpora.length)];
     loadCorpus(randomCorpus.id);
 });
-
 </script>
+
 
 	</body>
 </html>
