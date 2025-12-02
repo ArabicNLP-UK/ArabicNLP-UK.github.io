@@ -1,0 +1,27 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate sitemap
+        uses: cicirello/generate-sitemap@v1
+        with:
+          base-url-path: "https://arabicnlp.uk"
+          sitemap-path: "sitemap.xml"
+          include-html-files: true
+
+      - name: Commit sitemap
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: "github-actions"
+          author_email: "actions@github.com"
+          message: "Auto-update sitemap.xml"
+          add: "sitemap.xml"
