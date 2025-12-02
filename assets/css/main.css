@@ -3166,3 +3166,56 @@ input, select, textarea {
 #banner img {
     max-width: 130px !important;
 }
+/* Container */
+.resources-icons {
+    text-align: center;
+    padding: 0;
+}
+
+.resources-icons li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 25px;
+    position: relative;
+}
+
+/* Icon styling */
+.resource-icon {
+    width: 80px;                  /* bigger icons */
+    height: 80px;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: all 0.25s ease;
+}
+
+.resource-link:hover .resource-icon {
+    opacity: 1;
+    transform: translateY(-4px);  /* subtle lift */
+}
+
+/* Hidden text label */
+.resource-label {
+    display: block;
+    font-size: 0.85em;
+    margin-top: 8px;
+    opacity: 0;                   /* hidden by default */
+    color: #777;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+/* Only show text on hover */
+.resource-link:hover .resource-label {
+    opacity: 1;
+    color: #333;
+}
+
+/* Remove excess space between the icon row and the next section */
+.box.highlight,
+ul.resources-icons {
+    margin-bottom: 0;
+}
+
+.box.features {
+    margin-top: 1.5em !important;   /* reduce huge built-in gap */
+}
