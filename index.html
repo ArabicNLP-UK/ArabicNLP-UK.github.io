@@ -283,8 +283,13 @@
     </div>
 
 </div>
+<br>
+<br>
 
-
+<section>
+    <h2 class="major"><span>All Corpora</span></h2>
+    <div id="corpora-container">Loading...</div>
+</section>
 
 							</div>
 						</div>
@@ -1346,6 +1351,23 @@ window.addEventListener("DOMContentLoaded", () => {
     const randomCorpus = corpora[Math.floor(Math.random() * corpora.length)];
     loadCorpus(randomCorpus.id);
 });
+</script>
+<script>
+fetch("https://elhaj.uk/corpora.html")
+    .then(response => response.text())
+    .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+
+        // Extract only the main content, not header/footer
+        const main = doc.querySelector("main") || doc.body;
+
+        document.getElementById("corpora-container").innerHTML = main.innerHTML;
+    })
+    .catch(err => {
+        document.getElementById("corpora-container").innerHTML =
+            "Failed to load corpora list.";
+    });
 </script>
 
 
