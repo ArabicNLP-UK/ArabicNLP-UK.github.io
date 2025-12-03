@@ -1,5 +1,8 @@
 name: Generate Sitemap
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [ main ]
@@ -15,8 +18,8 @@ jobs:
         uses: cicirello/generate-sitemap@v1
         with:
           base-url-path: "https://arabicnlp.uk"
-          sitemap-path: "sitemap.xml"
-          include-html-files: true
+          include-html: true
+          path-to-root: "."
 
       - name: Commit sitemap
         uses: EndBug/add-and-commit@v9
