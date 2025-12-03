@@ -1,41 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Root website -->
-  <url>
-    <loc>https://arabicnlp.uk/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.00</priority>
-  </url>
-
-  <!-- Featured corpora page -->
-  <url>
-    <loc>https://arabicnlp.uk/corpora.html</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <!-- Contact / About section (if on homepage) -->
-  <url>
-    <loc>https://arabicnlp.uk/#contact</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.50</priority>
-  </url>
-
-  <!-- GitHub organisation link -->
-  <url>
-    <loc>https://github.com/ArabicNLP-UK</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.50</priority>
-  </url>
-
-  <!-- HuggingFace datasets -->
-  <url>
-    <loc>https://huggingface.co/drelhaj</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.50</priority>
-  </url>
-
+<url>
+<loc>https://arabicnlp.uk/</loc>
+<lastmod>2025-12-03T15:12:30+07:00</lastmod>
+</url>
+<url>
+<loc>https://arabicnlp.uk/left-sidebar.html</loc>
+<lastmod>2025-12-03T15:12:30+07:00</lastmod>
+</url>
+<url>
+<loc>https://arabicnlp.uk/no-sidebar.html</loc>
+<lastmod>2025-12-03T15:12:30+07:00</lastmod>
+</url>
+<url>
+<loc>https://arabicnlp.uk/right-sidebar.html</loc>
+<lastmod>2025-12-03T15:12:30+07:00</lastmod>
+</url>
 </urlset>
