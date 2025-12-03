@@ -233,7 +233,7 @@
                     </section>
                 </div>
 
-                <!-- Arabic Dialects -->
+<!-- Arabic Dialects -->
                 <div class="col-3 col-6-medium col-12-small">
                     <section class="box feature">
                         <a href="https://huggingface.co/datasets/drelhaj/Arabic-Dialects" target="_blank" class="image featured">
@@ -242,6 +242,32 @@
                         <h3><a href="https://huggingface.co/datasets/drelhaj/Arabic-Dialects" target="_blank">Arabic Dialects</a></h3>
                         <p>
                             A bivalency and code-switching focused corpus covering five major Arabic dialect varieties.
+                        </p>
+                    </section>
+                </div>
+<!-- DARES -->
+                <div class="col-3 col-6-medium col-12-small">
+                    <section class="box feature">
+                        <a href="https://github.com/ArabicNLP-UK/DARES-Readability-Dataset" target="_blank" class="image featured">
+                            <img src="images/dares.jpg" alt="DARES" class="feature-img" />
+                        </a>
+                        <h3><a href="https://github.com/ArabicNLP-UK/DARES-Readability-Dataset" target="_blank">DARES</a></h3>
+                        <p>
+                            DARES: Dataset for Arabic Readability Estimation of School Materials - Transformers based evaluation of readability of school materials in Saudi Arabia from grades 1 to 12.
+                        </p>
+                    </section>
+                </div>
+				
+                <!-- OSMAN -->
+                <div class="col-3 col-6-medium col-12-small">
+                    <section class="box feature">
+                        <a href="https://github.com/drelhaj/OsmanReadability" target="_blank" class="image featured">
+                            <img src="images/osman.jpg" alt="Arabic Dialects" class="feature-img" />
+                        </a>
+                        <h3><a href="https://github.com/drelhaj/OsmanReadability" target="_blank">OSMAN</a></h3>
+                        <p>
+                            Osman is a readability metric for Arabic that functions as the closest counterpart to the Flesch measure. The repository also includes a parallel Arabic–English dataset from the UN corpus.
+.
                         </p>
                     </section>
                 </div>
@@ -340,10 +366,10 @@
 									</p>
 
 									<p>
-										<a href="mailto:ArabicNLP.ltd@outlook.com">ArabicNLP.ltd@outlook.com</a><br>
 										<a href="https://elhaj.uk" target="_blank">elhaj.uk</a><br>
 										<a href="https://vinnlp.com" target="_blank">vinnlp.com</a><br>
 										<a href="https://arabicnlp.uk" target="_blank">arabicnlp.uk</a>
+										<a href="mailto:ArabicNLP.ltd@outlook.com">ArabicNLP.ltd@outlook.com</a><br>
 									</p>
 
 										<ul class="contact">
@@ -1178,7 +1204,7 @@
 		},
 		{
 			id: "arabic_dialects",
-			title: "Arabic Dialects Dataset",
+			title: "Arabic Dialects",
 			subtitle: "Bivalency, Code-Switching & Dialect Identification",
 			image: "images/arabic-dialects.jpg",
 			link: "https://huggingface.co/datasets/drelhaj/Arabic-Dialects",
@@ -1298,7 +1324,188 @@
 					dialect variation, bivalency, and automatic identification.
 				</p>
 			`
-		}
+		},
+		
+		{
+    id: "dares",
+    title: "DARES",
+    subtitle: "Readability Estimation for Arabic School Materials",
+    image: "images/dares.jpg",
+    link: "https://github.com/DamithDR/arabic-readability-assessment",
+    longHtml: `
+        <p><strong>DARES</strong> is a set of datasets and models designed for 
+        readability estimation of Arabic school materials. It supports transformer-based evaluation 
+        of text difficulty and has been featured in two publications:</p>
+
+        <ul>
+            <li>
+                <strong>DARES 1.0</strong>: 
+                <a href="https://aclanthology.org/2024.determit-1.10/" target="_blank" rel="noopener">
+                Dataset for Arabic Readability Estimation of School Materials</a>, 
+                presented at DETERMIT 2024, LREC-COLING.
+            </li>
+            <li>
+                <strong>DARES 2.0</strong>: 
+                <a href="https://dl.acm.org/doi/10.1145/3770070" target="_blank" rel="noopener">
+                Complex Concept-Based Readability Estimation from Arabic Curriculum</a>, 
+                published in ACM TALLIP.
+            </li>
+        </ul>
+
+        <h4>Installation</h4>
+        <p>Install <strong>PyTorch</strong> first (recommended: 2.2.1), following instructions from the 
+        <a href="https://pytorch.org/get-started/locally/#start-locally" target="_blank" rel="noopener">
+        PyTorch installation page</a>. Then clone the repository and install requirements:</p>
+
+        <pre><code>git clone https://github.com/DamithDR/arabic-readability-assessment.git
+cd arabic-readability-assessment
+pip install -r requirements.txt</code></pre>
+
+        <h4>Running Experiments</h4>
+        <p>You can run experiments on <strong>DARES 1.0</strong> using:</p>
+        <pre><code>python -m experiments.readability_assessement --model_name CAMeL-Lab/bert-base-arabic-camelbert-mix --model_type bert --num_train_epochs 4 --run_mode append_filename --n_fold 5 --cuda_device 0 --append_column Arabic_Filename</code></pre>
+
+        <p>For <strong>DARES 2.0</strong> use:</p>
+        <pre><code>python -m experiments.readability_assessement_V2 --model_name CAMeL-Lab/bert-base-arabic-camelbert-mix --model_type bert --num_train_epochs 4 --run_mode append_filename --n_fold 5 --cuda_device 0 --append_column Arabic_Filename</code></pre>
+
+        <h4>Parameters</h4>
+        <pre><code>model_name       : Hugging Face model name
+model_type       : Model type (e.g. bert)
+num_train_epochs : Number of training epochs
+run_mode         : Experiment mode
+n_fold           : Number of folds per experiment
+cuda_device      : GPU device index
+append_column    : Column of the dataset to append</code></pre>
+
+        <h4>Run Modes</h4>
+        <pre><code>test                            : for testing
+balanced                        : balance data across classes
+categorised                     : use categorised data
+categorised_test                : categorised mode, testing only
+append_word                     : append concept word
+append_word_categorised         : concept + categorised data
+append_filename                 : append subject to text
+append_filename_categorised     : subject + categorised data</code></pre>
+
+  <h4>Citation (DARES 1.0)</h4>
+  <pre><code>@inproceedings{el-haj-etal-2024-dares,
+  title = "{DARES}: Dataset for {A}rabic Readability Estimation of School Materials",
+  author = "El-Haj, Mo and Almujaiwel, Sultan and Premasiri, Damith and Ranasinghe, Tharindu and Mitkov, Ruslan",
+  booktitle = "Proceedings of the Workshop on DeTermIt! Evaluating Text Difficulty in a Multilingual Context @ LREC-COLING 2024",
+  month = may,
+  year = "2024",
+  address = "Torino, Italia",
+  publisher = "ELRA and ICCL",
+  url = "https://aclanthology.org/2024.determit-1.10",
+  pages = "103--113"
+}</code></pre>
+
+<pre><code>@article{Almujaiwel2025,
+author = {Almujaiwel, Sultan and Premasiri, Damith and Ranasinghe, Tharindu and El-Haj, Mo and Mitkov, Ruslan},
+title = {Complex Concept-Based Readability Estimation from Arabic Curriculum},
+year = {2025},
+issue_date = {November 2025},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {24},
+number = {11},
+issn = {2375-4699},
+url = {https://doi.org/10.1145/3770070},
+doi = {10.1145/3770070},
+journal = {ACM Trans. Asian Low-Resour. Lang. Inf. Process.},
+month = nov,
+articleno = {128},
+numpages = {21},
+keywords = {Arabic text readability, conceptual complexity, readability estimation, Saudi curriculum}
+}
+</code></pre>
+
+        <h4>Citation (DARES 2.0)</h4>
+        <p>Coming soon.</p>
+    `
+},
+		
+		{
+    id: "osman",
+    title: "OSMAN",
+    subtitle: "Arabic Readability, Faseeh Scoring, and UN Parallel Corpus",
+    image: "images/osman.jpg",
+    link: "https://github.com/drelhaj/OsmanReadability",
+    longHtml: `
+        <p><strong>OSMAN</strong> is an Arabic readability metric developed as the closest counterpart to
+        the Flesch measure. It draws on concepts from Flesch and Fog, then introduces a dedicated 
+        <strong>Faseeh</strong> component to capture fluency and linguistic complexity intrinsic to Arabic. 
+        The metric supports texts with or without diacritics, estimating syllables automatically when 
+        tashkeel is absent.</p>
+
+        <p>The metric is now integrated into the 
+        <a href="https://pypi.org/project/textstat/" target="_blank" rel="noopener">textstat</a> Python package, 
+        making it simple to compute Osman scores directly in Python.</p>
+
+        <h4>Quick Example</h4>
+        <pre><code>import textstat
+
+text = "أدخل النص العربي هنا"
+score = textstat.osman(text)
+print(score)</code></pre>
+
+        <h4>Project Highlights</h4>
+        <ul>
+            <li>Purpose-built for Arabic readability</li>
+            <li>Includes Faseeh scoring for fluency-aware assessment</li>
+            <li>Handles texts with and without diacritics (tashkeel)</li>
+            <li>Major 2020 rewrite removing Farasa dependency</li>
+            <li>Lightweight RegEx-based tokenisation</li>
+            <li>Open-source Java implementation with GUI</li>
+        </ul>
+
+        <h4>Running the Java Tool</h4>
+        <p>Launch the graphical interface with the pre-built JAR:</p>
+        <pre><code>java -Dfile.encoding=UTF-8 -jar Osman2020.jar</code></pre>
+        <p>If Arabic text displays incorrectly on Windows, set the locale to Arabic or run:</p>
+        <pre><code>set JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8</code></pre>
+
+        <h4>Java Classes</h4>
+        <p>Developers can call Osman directly through:</p>
+        <ul>
+            <li><code>OsmanReadability.calculateOsman(String text)</code></li>
+            <li><code>removeTashkeel(String text)</code> for stripping diacritics</li>
+        </ul>
+        <p>The tool also provides other readability scores such as <strong>ARI</strong> and <strong>LIX</strong>.</p>
+
+        <h4>OSMAN UN Parallel Corpus</h4>
+        <p>
+            The repository includes a parallel Arabic–English dataset derived from the UN corpus.
+            Sentences are aligned and provided in two forms:
+        </p>
+        <ul>
+            <li>With full Arabic diacritics (tashkeel)</li>
+            <li>Without diacritics</li>
+        </ul>
+        <p>This corpus is suitable for research on readability, machine translation, diacritic-aware modelling,
+        and comparative Arabic–English linguistic analysis.</p>
+        <p>
+            Direct access: 
+            <a href="https://github.com/drelhaj/OsmanReadability/tree/master/Osman_UN_Corpus" target="_blank" rel="noopener">
+            Osman UN Corpus on GitHub
+            </a>
+        </p>
+
+        <h4>Citation</h4>
+        <p>
+            <em>El-Haj, M. &amp; Rayson, P. (2016). OSMAN – A Novel Arabic Readability Metric.
+            Proceedings of LREC 2016, Portorož.</em><br>
+            <a href="https://aclanthology.org/L16-1038.pdf" target="_blank" rel="noopener">Paper PDF</a>
+        </p>
+
+        <h4>Contact</h4>
+        <p>
+            <strong>Mo El-Haj</strong><br>
+            <a href="mailto:dr.melhaj@gmail.com">dr.melhaj@gmail.com</a>
+        </p>
+    `
+}
+
     ];
 
     // Pick a random corpus
