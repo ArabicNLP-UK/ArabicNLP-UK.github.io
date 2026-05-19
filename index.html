@@ -142,6 +142,20 @@
         <div>
             <div class="row">
 
+                <!-- Tarab -->
+                <div class="col-3 col-6-medium col-12-small">
+                    <section class="box feature">
+                        <a href="https://huggingface.co/datasets/drelhaj/Tarab" target="_blank" class="image featured">
+                            <img src="images/tarab.png" alt="Tarab" class="feature-img" />
+                        </a>
+                        <h3><a href="https://huggingface.co/datasets/drelhaj/Tarab" target="_blank">Tarab</a></h3>
+                        <p>
+                            a large-scale Arabic creative-text corpus that unifies song lyrics and poetry, containing 2,557,311 verses and 13,509,336 tokens, spanning Classical Arabic, MSA, and six major regional dialect groups.
+                        </p>
+                    </section>
+                </div>
+				
+				
                 <!-- AraFinNews -->
                 <div class="col-3 col-6-medium col-12-small">
                     <section class="box feature">
@@ -428,6 +442,91 @@
 <script>
     const corpora = [
         {
+  id: "tarab",
+  title: "Tarab",
+  subtitle: "A Multi-Dialect Corpus of Arabic Lyrics and Poetry",
+  image: "images/tarab.png",
+  link: "https://huggingface.co/datasets/drelhaj/Tarab",
+  longHtml: `
+    <p><strong>Tarab</strong> is a large-scale Arabic creative-text corpus that brings together
+    <strong>song lyrics</strong> and <strong>poetry</strong> in a unified verse-level format. It contains
+    <strong>2,557,311 verses</strong> and <strong>13,509,336 tokens</strong>, covering Classical Arabic,
+    Modern Standard Arabic, and six major regional dialect groups.</p>
+
+    <p>The dataset is designed for research on Arabic dialects, creative language, poetry, lyrics,
+    stylistic variation, text generation, dialect identification, and cross-dialect modelling.</p>
+
+    <h4>Dataset Overview</h4>
+    <ul>
+      <li><strong>Total works:</strong> 89,166 songs and poems</li>
+      <li><strong>Total verses:</strong> 2,557,311</li>
+      <li><strong>Total tokens:</strong> 13,509,336</li>
+      <li><strong>Language:</strong> Arabic</li>
+      <li><strong>Text types:</strong> Song lyrics and poetry</li>
+      <li><strong>Licence:</strong> CC BY 4.0</li>
+    </ul>
+
+    <h4>Dialect Coverage</h4>
+    <p>Tarab covers eight dialect and language categories:</p>
+    <ul>
+      <li>Classical Arabic</li>
+      <li>Modern Standard Arabic</li>
+      <li>Egyptian</li>
+      <li>Gulf</li>
+      <li>Levantine</li>
+      <li>Iraqi</li>
+      <li>Sudanese</li>
+      <li>Maghrebi</li>
+    </ul>
+
+    <h4>Core Fields</h4>
+    <ul>
+      <li><code>art_id</code> – work identifier</li>
+      <li><code>artist_id</code>, <code>artist_name</code> – creator information</li>
+      <li><code>art_title</code> – song or poem title</li>
+      <li><code>writer</code>, <code>composer</code> – credits where available</li>
+      <li><code>verse_order</code> – verse position within the work</li>
+      <li><code>verse_lyrics</code> – Arabic verse text</li>
+      <li><code>origin</code> – country or historical era</li>
+      <li><code>dialect</code> – dialect or Arabic variety</li>
+      <li><code>type</code> – song or poem</li>
+      <li><code>word_count</code> – precomputed token count</li>
+    </ul>
+
+    <h4>Data Splits</h4>
+    <p>The repository provides <code>train.csv</code>, <code>validation.csv</code>, and
+    <code>test.csv</code> using a <strong>70/15/15 split</strong> at the work level
+    (<code>art_id</code>). This avoids leakage by ensuring that verses from the same song or poem
+    do not appear in multiple splits.</p>
+
+    <h4>Intended Use</h4>
+    <p>Tarab supports research on:</p>
+    <ul>
+      <li>Arabic dialect identification and classification</li>
+      <li>Poetry and lyrics generation</li>
+      <li>Creative Arabic language modelling</li>
+      <li>Cross-dialect transfer learning</li>
+      <li>Stylistic and cultural analysis of Arabic songs and poetry</li>
+      <li>Computational literary and cultural studies</li>
+    </ul>
+
+    <h4>Citation</h4>
+    <p>If you use Tarab, please cite:</p>
+    <p>
+      <em>El-Haj, M. (2026). Tarab: A Multi-Dialect Corpus of Arabic Lyrics and Poetry.
+      Proceedings of the 2nd Workshop on NLP for Languages Using Arabic Script
+      (AbjadNLP 2026), EACL 2026, Rabat, Morocco.</em>
+    </p>
+
+    <h4>Contact</h4>
+    <p>
+      <strong>Mo El-Haj</strong><br>
+      VinUniversity, Hanoi / Lancaster University, UK<br>
+      <a href="mailto:Arabic.NLP@outlook.com">Arabic.NLP@outlook.com</a>
+    </p>
+  `
+	},
+	{
             id: "arafinnews",
             title: "AraFinNews",
             subtitle: "The Arabic Financial News Dataset (212K)",
